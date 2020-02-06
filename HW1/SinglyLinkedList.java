@@ -1,3 +1,9 @@
+/**
+* A class that implements a singly LinkedList
+*
+* @name		Viet Nguyen, Joshua Martin
+* @version	02/06/2020
+*/
 import java.util.*;
 import java.util.Iterator;
 
