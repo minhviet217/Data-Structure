@@ -22,8 +22,15 @@ public class SinglyLinkedList<T> implements Iterable{
 		this.tail = null;
 	}
 	
+	public Node getHead(){
+		return this.head;
+	}
+	
+	public Node getTail(){
+		return this.tail;
+	}
 	//The SinglyLinkedListIterator is a private inner class, it implements the Iterator interface and it's methods. 
-	private class SinglyLinkedListIterator implements Iterator<T>{
+	class SinglyLinkedListIterator implements Iterator<T>{
 		//Declare Node instance variable.
 		private Node node;
 		//SinglyLinkedList Constructor assigns head node to node instance variable.
@@ -62,11 +69,11 @@ public class SinglyLinkedList<T> implements Iterable{
 	}
 
 	//A private nested class.
-	private static class Node {
+	private class Node{
 		//Instance variable to store the element within a node.
-		private T element;
+		public T element;
 		//Instance variable to store a reference to the next node from the current node focused upon.
-		private Node nextNode;
+		public Node nextNode;
 
 		//Node constructor that builds a new Node with a given element within it.
 		public Node(T element){

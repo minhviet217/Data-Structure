@@ -8,10 +8,10 @@ import java.util.LinkedList;
 
 public class MyStack<T> {
 
-	private LinkedList<T> SinglyLinkedList;
+	private SinglyLinkedList<T> theList;
 	
 	public MyStack() {
-		this.SinglyLinkedList = new LinkedList<T>();
+		this.theList = new SinglyLinkedList<T>();
 	}
 	
 	/**
@@ -20,7 +20,9 @@ public class MyStack<T> {
 	* @return	T 	
 	*/
 	public T pop() {
-		T popValue = this.SinglyLinkedList.remove(this.SinglyLinkedList.size()-1);
+		SinglyLinkedList<T>.SinglyLinkedListIterator it = theList.iterator();
+		T popValue = it.next();
+		theList.remove(popValue);
 		return popValue;
 	}
 	
@@ -30,9 +32,8 @@ public class MyStack<T> {
 	* @param	T 	item
 	*/
 	public void push(T value) {
-		
-		//Provide implementation.
-		this.SinglyLinkedList.add(value);
+	
+		this.theList.add(value);
 	}
 	
 	/**
@@ -41,7 +42,7 @@ public class MyStack<T> {
 	* @return	true or false	
 	*/
 	public boolean isEmpty(){
-		if (this.SinglyLinkedList.size() == 0){
+		if (this.theList.size() == 0){
 			return true;
 		}
 		return false;
