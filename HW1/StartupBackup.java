@@ -6,7 +6,7 @@
 */
 import java.util.*;
 import java.util.Iterator;
-public class Startup<T>{
+public class StartupBackup<T>{
 	public static int precedence(char operand){
 		if(operand == '+' || operand == '-'){
 				int precedence = 1;
