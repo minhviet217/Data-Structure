@@ -12,6 +12,7 @@ The methods we chose to include were:
 push - We needed a way to add things onto the top of our stack.
  We chose to make the last node in the SinglyLinkedList our top.
  From this point we used our add method within the SinglyLinkedList class in order to add a new node to the LinkedList that is the stack.
+ Viet worked on this portion
 
 pop - The pop method not only takes the top value off the stack it also returns it.
 We instantiated an iterator called "it" to be able to navigate any preexisting nodes.
@@ -20,15 +21,16 @@ Inside the loop we constantly reassigned a temp value to the value of the iterat
 When the while loop stopped this meant that the temp value is actually the element of the last node.
 We then used the remove method to remove the node containing the same element as the last node.
 Lastly we jsut needed to return the value saved in temp and the pop was functionally done.
-
+Joshua worked on this portion
 
 peek - The peek method functions in much of the same way as the pop except that it does not remove any nodes.
 The iterator was instantiated and used in order to find the element in the last node.
 This is then returned so that we can use this in our precedence checking in the Startup class.
+Viet worked on this portion.
  
 isEmpty - The isEmpty method is based on the fact that our "stack" is a Linked List. 
 Linked List has a size method that we used to determine whether or not the stack is empty (size==0) or not(size!=0).
-
+Joshua worked on this portion.
 
 For the Startup class we chose to only include two methods:
 main - the method that acts as the sandbox for us to test our previous classes and their methods.
@@ -52,4 +54,4 @@ In between the pushed open parenthesis and the closed parenthesis the inner equa
 The only difference is that when the closed parenthesis is read it pops all values off the stack until the open parenthesis.
 Lastly, to make sure we don't have any remaining operators on the stack we pop all stack values until the stack is empty.
 
-
+Viet and Joshua both worked on the implementation for infix to postfix conversion.
