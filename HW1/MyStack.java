@@ -27,13 +27,25 @@ public class MyStack<T> {
 	}
 	
 	/**
+	* Peek the item on the top of the stack.
+	*
+	* @return	T 	
+	*/
+	public T peek() {
+		SinglyLinkedList<T>.SinglyLinkedListIterator it = theList.iterator();
+		T popValue = it.next();
+		return popValue;
+	}
+	
+	
+	/**
 	* Pushes an item to the top of the stack.
 	*
 	* @param	T 	item
 	*/
 	public void push(T value) {
 	
-		this.theList.add(value);
+		this.theList.insertAt(value,0);
 	}
 	
 	/**
