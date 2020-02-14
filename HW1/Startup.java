@@ -7,55 +7,83 @@
 import java.util.*;
 import java.util.Iterator;
 public class Startup<T>{
-	public static int precedence(char operand){
-		if(operand == '+' || operand == '-'){
-				int precedence = 1;
-				return precedence;
-			}
-			else if(operand == '*' || operand == '/'){
-				int precedence = 2;
-				return precedence;
-			}
-			return -1;
-			
-				
-	}
-	
 		
 	public static void main(String[] args){
-		Scanner scanner = new Scanner(System.in);//create scanner to scan users' input
-		System.out.println("Please type your input");//prompt users for input
-		String infix = scanner.nextLine();//Read the input
+		//create scanner to scan users' input
+		Scanner scanner = new Scanner(System.in);
+		
+		//prompt users for input
+		System.out.println("Please type your input");
+		
+		//Read the input
+		String infix = scanner.nextLine();
+		
+		//Output postfix order
 		String postfix = "";
-		MyStack<Character> stack = new MyStack<>();//create stack 
-		//for loop to check every single symbol from users' input
+		
+		//create stack 
+		MyStack<Character> stack = new MyStack<>();
+		
+		//for loop to read every single character from users' input 
 		for(int i = 0; i < infix.length();i++){
 			char current = infix.charAt(i);
 			
-			if(precedence(current) > 0){
-				while(stack.isEmpty() == false && precedence(stack.peek()) >= precedence(current)){
+			//Check if the character is operator
+			if(priority(current) > 0){
+				//if stack is empty, push current to stack
+				if (stack.isEmpty()){
+					stack.push(current);
+					}
+				
+				else {
+				//while stack is not empty, check precedence between C.O and E.O
+				//existing operator (E.O) >= current operator (C.O), pop E.O
+				while(!stack.isEmpty() && priority(stack.peek()) >= priority(current)){
 					postfix += stack.pop();
 				}
+				//while loop will terminate when checking of E.O and C.O does not sastify the conditional operation
+				//and then push C.O to stack
 				stack.push(current);
-			}
-			else if(current == ')'){
-				char temp = stack.pop();
-				while(temp != '('){
-					postfix += temp;
-					temp = stack.pop();
 				}
 			}
+			
+			//if character is open parenthesis, push operator to stack
 			else if(current == '('){
 				stack.push(current);
 			}
-			else{
-				postfix += current;
+			
+			//if character is close parenthesis, pop operators until hit open parenthesis
+			else if(current == ')'){
+				char temp = stack.pop();
+				do{
+				postfix += temp;
+				temp = stack.pop();}
+				while(temp != '(');
 			}
 			
+			//If the character is not operator or parenthesese, output it
+			else{
+				postfix += current;
+			}	
 		}
+		
+		//pop the rest in stack if it not empty
 		while(stack.isEmpty() == false){
 				postfix += stack.pop();
 		}
 		System.out.println("Postfix converted string: " + postfix);
+	}
+	
+	//method that return the predecence of 4 operator +, -, *, /
+	public static int priority(char operand){
+		if(operand == '+' || operand == '-'){
+				int priority = 1;
+				return priority;
+			}
+			else if(operand == '*' || operand == '/'){
+				int priority = 2;
+				return priority;
+			}
+			return 0;
 	}
 }
