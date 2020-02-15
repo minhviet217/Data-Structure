@@ -76,14 +76,17 @@ public class Startup<T>{
 	
 	//method that return the predecence of 4 operator +, -, *, /
 	public static int priority(char operand){
+		//Add and subtract have base level priority so  we gave it an integer equivalent of 1.
 		if(operand == '+' || operand == '-'){
 				int priority = 1;
 				return priority;
 			}
+			//Multipy and divide have higher priority than add and subtract thus gets a higher integer value.
 			else if(operand == '*' || operand == '/'){
 				int priority = 2;
 				return priority;
 			}
+			//All other characters will return 0.
 			return 0;
 	}
 }

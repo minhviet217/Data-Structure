@@ -3,6 +3,12 @@ For Homework 1 we were tasked to do 3 major things:
 2)Implement a stack using the SinglyLinkedList class.
 3)Convert an infix equation to postfix using the MyStack class.
 
+*Below are technical descriptions of programs for homework 1. 
+*It is important that when you compile and run the programs from the terminal the Startup class will ask for input.
+*Enter the infix equation you wish to convert at this point within the terminal.
+*Please add each character directly after the other with no spaces.
+
+
 The setup we followed for SinglyLinkedList was taken from the pseudocode from the homework assignment sheet.
 As far as the other two files MyStack.java and Startup.java we had to be more creative in our solution.
 
@@ -25,7 +31,7 @@ Joshua worked on this portion
 
 peek - The peek method functions in much of the same way as the pop except that it does not remove any nodes.
 The iterator was instantiated and used in order to find the element in the last node.
-This is then returned so that we can use this in our precedence checking in the Startup class.
+This is then returned so that we can use this in our priority checking in the Startup class.
 Viet worked on this portion.
  
 isEmpty - The isEmpty method is based on the fact that our "stack" is a Linked List. 
@@ -34,24 +40,26 @@ Joshua worked on this portion.
 
 For the Startup class we chose to only include two methods:
 main - the method that acts as the sandbox for us to test our previous classes and their methods.
-precedence - Based on mathematical precedence we set a smaller integer value for characters + or - then * or /.
+
+priority - Based on mathematical priority we set a smaller integer value for characters + or - then * or /.
 A return value of -1 was made for any opertor that was not +,-,*,/.
-This allowed us to numerically compare operators in a few different tiers of precedence.
+This allowed us to numerically compare operators in a few different tiers of mathematical priority.
 When we compared the character on the stack and the last read character we could apply that to the infix postfix algorithm in order to determine what to push or pop and when.
 
 Infix to postfix algorithm:
 
 We read the string inputted by the user a single character at a time.
 If we read an operator push immediately to the stack if the stack is empty.
-In the case that the stack is not empty  we compare the precedence level of the character on the top of the stack to the character last read.
-If the stack value is of higher precedence then you pop the stack value.
-You must continuously compare the last read character to the top of the stack until the stack does not have any more values or has less than or equal precedence.
+In the case that the stack is not empty  we compare the priority level of the character on the top of the stack to the character last read.
+If the stack value is of higher priority then you pop the stack value.
+You must continuously compare the last read character to the top of the stack until the stack does not have any more values or has less than or equal priority level.
 This indicates that you must push the last read value on the stack.
 
 Operands(letters or numbers) can be pushed as soon as they are read.
 If an open paranthesis is read then we push it to the stack.
 In between the pushed open parenthesis and the closed parenthesis the inner equation will be translated like normal.
 The only difference is that when the closed parenthesis is read it pops all values off the stack until the open parenthesis.
+
 Lastly, to make sure we don't have any remaining operators on the stack we pop all stack values until the stack is empty.
 
 Viet and Joshua both worked on the implementation for infix to postfix conversion.
