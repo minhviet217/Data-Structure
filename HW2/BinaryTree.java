@@ -138,27 +138,26 @@ public class BinaryTree<T>{
 
 	public String breadthFirstTraverse(){
 		// TODO: Modify this method-body to return a string corresponding
-		// to the bread-first-traversal of the tree
-		/*
-		Queue<BinaryNode<T>> queue = new LinkedList<>();
-		if(root == null) return "The tree is empty!";
-		queue.add(root);
+		// to the breadth-first-traversal of the tree.
 		
-		while(queue.size() < this().size()){
-			BinaryNode<T> currentNode = queue.poll();
-			if(currentNode.getLeftNode() != null){
-				queue.add(currentNode.getLeftNode());
-			}
-			if(currentNode.getRightNode() != null){
-				queue.add(currentNode.getRightNode());
-			}
+		String st = "";
+        if(root==null){
+			st = "Tree is empty";
+			return st ;
 		}
-		String queueStorage = "";
-		for(int i = 0; i < queue.size();i++){
-			queueStorage += queue.get(i);
-		}
-		return queueStorage;
-		*/
+		Queue<BinaryNode<T>> queue = new LinkedList<>();
+        queue.add(root);
+        while(!queue.isEmpty()){
+            BinaryNode<T> pop = queue.remove();
+            st = pop + " ";
+            if(pop.getLeftNode() != null) {
+                queue.add(pop.getLeftNode());
+            }
+            if(pop.getRightNode() != null) {
+                queue.add(pop.getRightNode());
+            }
+        }	
+		return st;
 	}
 
 	public String preOrderTraverse(){
