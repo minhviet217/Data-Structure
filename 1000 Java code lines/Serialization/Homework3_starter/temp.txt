@@ -1,0 +1,6 @@
+ID,Sex,Ethnic Grp,Name,Prim Prog,Acad Plan,Sub-Plan,Strt Level,Total,GPA,FAFSA,Take Prgrs,Fin Need
+2402106,F,Not Specified,"Sennheiser, Haydar W.",USCI,CSCI,,14,24.000,2.674,Y,8.000,9388.00
+2835521,F,Not Specified,"Sennheiser, Jason B.",USCI,CSCI,INFASSUR,16,20.000,2.337,N,5.000,604.00
+2570895,F,Two or more races,"Sennheiser, Nancy T.",USCI,CSCI,,26,12.000,2.898,Y,16.000,9819.00
+2530192,M,Two or more races,"Feynman, Lucy S.",USCI,CSCI,GAMEDEV,4,0.000,3.713,N,1.000,5621.00
+2165236,M,White,"Tudor, Stan F.",USCI,CSCI,,5,20.000,3.056,N,16.000,6510.00
