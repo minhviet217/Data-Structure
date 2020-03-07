@@ -250,14 +250,36 @@ public class BinaryTree<T>{
 		}
 
 		public String postOrderTraverse(){			
-			System.out.println("This method is yet to be implemented");
-			return "0";
+			StringBuilder stringBuffer = new StringBuilder();			
+			
+			if(leftNode != null){
+				stringBuffer.append(leftNode.preOrderTraverse());				
+			}
+			
+			if(rightNode != null){
+				stringBuffer.append(rightNode.preOrderTraverse());
+			}
+			
+			stringBuffer.append(" " + data);
+			
+			return stringBuffer.toString();
 		}
 
 		public String inOrderTraverse(){	
 
-			System.out.println("This method is yet to be implemented");
-			return "duh";
+			StringBuilder stringBuffer = new StringBuilder();			
+			
+			if(leftNode != null){
+				stringBuffer.append(leftNode.preOrderTraverse());				
+			}
+			
+			stringBuffer.append(" " + data);
+			
+			if(rightNode != null){
+				stringBuffer.append(rightNode.preOrderTraverse());
+			}
+
+			return stringBuffer.toString();
 		}
 	}
 }
