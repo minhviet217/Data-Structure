@@ -110,54 +110,79 @@ public class BinaryTree<T>{
 	public int width(){
 		// TODO: Modify this method-body to compute and return the width 
 		// of the tree.
-		int highWidth = 0;
-		//Created an ArrayDeque because it automatically adjusts the size of the queue.
+		
+			// return if tree is empty
+		if (root == null) {
+			return 0;
+		}
+
+		// create an empty queue and enqueue root node
 		Queue<BinaryNode<T>> queue = new LinkedList<>();
-		
-		if(root == null) return 0;
 		queue.add(root);
-		
-		while(queue.isEmpty() == false){
+
+		// pointer to store current node
+		BinaryNode<T> curr = null;
+
+		// stores maximum width
+		int max = 0;
+
+		// run till queue is not empty
+		while (!queue.isEmpty())
+		{
+			// calculate number of nodes in current level
+			// This is equal to width of current level
 			int width = queue.size();
-			if(highWidth < width){
-				highWidth = width;
+
+			// update maximum width if number of nodes in current level
+			// is more than maximum width found so far
+			if (max < width) {
+				max = width;
 			}
-			
-			while(width > 0){
-				BinaryNode<T> currentNode = queue.poll();
-				if(currentNode.getLeftNode() != null){
-					queue.add(currentNode.getLeftNode());
+
+			// process every node of current level and enqueue their
+			// non-empty left and right child to queue
+			while (width-- > 0)
+			{
+				curr = queue.poll();
+
+				if (curr.getLeftNode() != null) {
+					queue.add(curr.getLeftNode());
 				}
-				if(currentNode.getRightNode() != null){
-					queue.add(currentNode.getRightNode());
+
+				if (curr.getRightNode() != null) {
+					queue.add(curr.getRightNode());
 				}
 			}
 		}
-		return highWidth;	
+
+		return max;
 	}
 
 	public String breadthFirstTraverse(){
 		// TODO: Modify this method-body to return a string corresponding
 		// to the breadth-first-traversal of the tree.
 		
-		String st = "";
-        if(root==null){
-			st = "Tree is empty";
-			return st ;
-		}
+		
 		Queue<BinaryNode<T>> queue = new LinkedList<>();
-        queue.add(root);
-        while(!queue.isEmpty()){
-            BinaryNode<T> pop = queue.remove();
-            st = pop + " ";
-            if(pop.getLeftNode() != null) {
-                queue.add(pop.getLeftNode());
-            }
-            if(pop.getRightNode() != null) {
-                queue.add(pop.getRightNode());
-            }
-        }	
+		queue.add(root);
+		
+		String st ="";
+		
+		while (queue.isEmpty() == false) {
+			
+			BinaryNode<T> n = queue.remove();
+			st = st + " " + n.getData();
+			
+			if (n.getLeftNode() != null)
+				queue.add(n.getLeftNode());
+				
+			if (n.getRightNode() != null)
+				queue.add(n.getRightNode());
+			
+		}
+		st = st.substring(1,st.length());
 		return st;
+		
 	}
 
 	public String preOrderTraverse(){
@@ -172,7 +197,7 @@ public class BinaryTree<T>{
 		return root.inOrderTraverse().trim();
 	}
 	
-	class BinaryNode<T>{
+	static class BinaryNode<T>{
 		private T data = null;
 		private BinaryNode<T> leftNode = null;
 		private BinaryNode<T> rightNode = null;
@@ -250,36 +275,31 @@ public class BinaryTree<T>{
 		}
 
 		public String postOrderTraverse(){			
-			StringBuilder stringBuffer = new StringBuilder();			
-			
+			StringBuilder stringBuffer = new StringBuilder();
 			if(leftNode != null){
-				stringBuffer.append(leftNode.preOrderTraverse());				
+				stringBuffer.append(leftNode.postOrderTraverse());				
 			}
-			
 			if(rightNode != null){
-				stringBuffer.append(rightNode.preOrderTraverse());
+				stringBuffer.append(rightNode.postOrderTraverse());
 			}
-			
 			stringBuffer.append(" " + data);
-			
-			return stringBuffer.toString();
+			return stringBuffer.toString();	
 		}
 
 		public String inOrderTraverse(){	
-
-			StringBuilder stringBuffer = new StringBuilder();			
+			StringBuilder stringBuffer = new StringBuilder();
 			
 			if(leftNode != null){
-				stringBuffer.append(leftNode.preOrderTraverse());				
+				stringBuffer.append(leftNode.inOrderTraverse());				
 			}
 			
 			stringBuffer.append(" " + data);
 			
 			if(rightNode != null){
-				stringBuffer.append(rightNode.preOrderTraverse());
+				stringBuffer.append(rightNode.inOrderTraverse());
 			}
 
-			return stringBuffer.toString();
+			return stringBuffer.toString();		
 		}
 	}
 }
